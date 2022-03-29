@@ -1,0 +1,35 @@
+<!-- File: headline_teks.html -->
+<html>
+    <head>
+        <title>Membaca File Json</title>
+        <!-- Import Library JQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!-- Kode Java Script -->
+        <script type="text/javascript">
+            $(function(){
+                //mengambil data dari file json
+                $.get('hasil.json',function(obj){
+                    var str = "<table border=1 align=center>";
+                    str +="<tr><td>No</td><td class='tables'>song</td><td class='tables'>singer</td><td class='tables'>image</td><td class='tables'>waktu scraping</td></tr>";
+                    $.each(obj,function(n,data){                    
+                        str +="<tr><td>" + data.No + "</td>";
+                        str +="<td class='tables'>" + data.Song + "</td>";
+                        str +="<td class='tables'>" + data.Singer + "</td>";
+                        str+='<td><img src="' + data.Image + '"></td>';
+                        str+="<td>"+data.ScrappingTime+"</td></tr>";
+                    });
+                    str +="</table>";
+                    $('#headline_json').html(str);
+                });
+            });
+        </script>
+    </head>
+    <body>
+         <!-- Menampilkan judul -->
+         <!-- <h1>Headline Republika Online</h1> -->
+         <h1><center>Hot 100 Song </center></h1>
+         <!-- Menampilkan headline -->
+         <div id="headline_json"></div>
+         
+    </body>
+</html>
